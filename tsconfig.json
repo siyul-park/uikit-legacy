@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "declarationDir": "./dist",
+    "noEmit": true,
+    "module": "esnext",
+    "target": "es5",
+    "lib": ["dom", "esnext"],
+    "sourceMap": true,
+    "jsx": "react",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "strict": true,
+    "useUnknownInCatchVariables": false,
+    "allowJs": true,
+    "noImplicitAny": false,
+    "baseUrl": "./",
+    "paths": {
+      "@layout/*": ["src/layout/*"]
+    }
+  },
+  "types": ["react", "jest"],
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}
