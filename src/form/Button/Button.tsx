@@ -28,6 +28,13 @@ const paddingConfig: Record<NonNullable<ButtonProps['size']>, string> = {
   lg: 'px-lg',
   xl: 'px-xl',
 };
+const gapConfig: Record<NonNullable<ButtonProps['size']>, string> = {
+  xs: 'gap-xs',
+  sm: 'gap-sm',
+  md: 'gap-md',
+  lg: 'gap-md',
+  xl: 'gap-md',
+};
 const roundConfig: Record<NonNullable<ButtonProps['size']>, string> = {
   xs: 'rounded-md',
   sm: 'rounded-md',
@@ -61,7 +68,8 @@ const Button: OverridableComponent<ButtonTypeMap> = (props) => {
         colorConfig[color],
         'box-border',
         color === 'white' ? 'border border-solid border-slate-900/5' : null,
-        'flex flex-row items-center justify-center gap-sm',
+        'flex flex-row items-center justify-center',
+        gapConfig[size],
         'font-semibold',
         className,
       )}
