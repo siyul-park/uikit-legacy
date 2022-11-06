@@ -68,7 +68,7 @@ const Button: OverridableComponent<ButtonTypeMap> = (props) => {
         colorConfig[color],
         'box-border',
         color === 'white' ? 'border border-solid border-slate-900/5' : null,
-        'flex flex-row items-center justify-center',
+        'inline-flex flex-row items-center justify-center',
         gapConfig[size],
         'font-semibold',
         className,

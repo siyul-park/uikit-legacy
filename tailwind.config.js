@@ -869,11 +869,11 @@ module.exports = {
     width: {
       0: '0rem',
 
-      xs_c: '0.75rem',
-      sm_c: '0.875rem',
-      md_c: '1rem',
-      lg_c: '1.125rem',
-      xl_c: '1.25rem',
+      xs_c: '1rem',
+      sm_c: '1.25rem',
+      md_c: '1.5rem',
+      lg_c: '1.75rem',
+      xl_c: '1.75rem',
 
       xs: '1.25rem',
       sm: '1.75rem',
