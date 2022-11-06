@@ -15,11 +15,11 @@ const sizeConfig: Record<NonNullable<ButtonProps['size']>, string> = {
   xl: 'text-xl min-w-xl min-h-xl',
 };
 const childSizeConfig: Record<NonNullable<ButtonProps['size']>, string> = {
-  xs: 'h-xs_c',
-  sm: 'h-sm_c',
-  md: 'h-md_c',
-  lg: 'h-lg_c',
-  xl: 'h-xl_c',
+  xs: 'h-xs_in',
+  sm: 'h-sm_in',
+  md: 'h-md_in',
+  lg: 'h-lg_in',
+  xl: 'h-xl_in',
 };
 const paddingConfig: Record<NonNullable<ButtonProps['size']>, string> = {
   xs: 'px-sm',
