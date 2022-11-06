@@ -8,7 +8,6 @@ export default {
 };
 
 export const Playground = (props) => <Box {...props} />;
-
 Playground.args = {
   as: 'div',
   className: 'border border-slate-800 border-dashed w-96 h-96',

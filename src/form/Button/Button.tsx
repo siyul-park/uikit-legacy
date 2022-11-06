@@ -8,16 +8,37 @@ import ButtonProps from './ButtonProps';
 import ButtonTypeMap from './ButtonTypeMap';
 
 const sizeConfig: Record<NonNullable<ButtonProps['size']>, string> = {
-  xs: 'text-xs px-xs py-xs/2',
-  sm: 'text-sm px-sm py-sm/2',
-  md: 'text-md px-md py-md/2',
-  lg: 'text-lg px-lg py-lg/2',
-  xl: 'text-xl px-xl py-xl/2',
+  xs: 'text-xs min-w-xs min-h-xs',
+  sm: 'text-sm min-w-sm min-h-sm',
+  md: 'text-md min-w-md min-h-md',
+  lg: 'text-lg min-w-lg min-h-lg',
+  xl: 'text-xl min-w-xl min-h-xl',
+};
+const childSizeConfig: Record<NonNullable<ButtonProps['size']>, string> = {
+  xs: 'h-xs_c',
+  sm: 'h-sm_c',
+  md: 'h-md_c',
+  lg: 'h-lg_c',
+  xl: 'h-xl_c',
+};
+const paddingConfig: Record<NonNullable<ButtonProps['size']>, string> = {
+  xs: 'px-sm',
+  sm: 'px-sm',
+  md: 'px-md',
+  lg: 'px-lg',
+  xl: 'px-xl',
+};
+const roundConfig: Record<NonNullable<ButtonProps['size']>, string> = {
+  xs: 'rounded-md',
+  sm: 'rounded-md',
+  md: 'rounded-md',
+  lg: 'rounded-lg',
+  xl: 'rounded-xl',
 };
 const colorConfig: Record<NonNullable<ButtonProps['color']>, string> = {
-  primary: 'text-neutral-50 bg-primary',
-  secondary: 'text-primary bg-secondary',
-  white: 'text-neutral-900 bg-white',
+  primary: 'text-slate-50 fill-slate-50 bg-primary transition-colors hover:brightness-90 active:brightness-90',
+  secondary: 'text-primary fill-primary bg-secondary transition-colors hover:brightness-90 active:brightness-90',
+  white: 'text-slate-600 fill-slate-600 bg-white transition-colors hover:text-slate-700 hover:fill-slate-600 hover:bg-slate-50',
 };
 
 const Button: OverridableComponent<ButtonTypeMap> = (props) => {
@@ -35,14 +56,30 @@ const Button: OverridableComponent<ButtonTypeMap> = (props) => {
       as="button"
       className={classnames(
         sizeConfig[size],
-        round ? 'rounded-full' : 'rounded-md',
+        paddingConfig[size],
+        round ? 'rounded-full' : roundConfig[size],
         colorConfig[color],
-        color === 'white' ? 'border border-solid border-neutral-300' : null,
+        'box-border',
+        color === 'white' ? 'border border-solid border-slate-900/5' : null,
+        'flex flex-row items-center justify-center gap-sm',
+        'font-semibold',
         className,
       )}
       {...others}
     >
-      {children}
+      {React.Children.map(children, (child) => {
+        if (!React.isValidElement(child)) {
+          return child;
+        }
+        const c = child as React.ReactElement;
+        return React.cloneElement(child, {
+          ...c.props,
+          className: classnames(
+            childSizeConfig[size],
+            c.props?.className,
+          ),
+        });
+      })}
     </Box>
   );
 };

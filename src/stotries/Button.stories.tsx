@@ -8,62 +8,85 @@ export default {
   component: Button,
 };
 
-export const Primary = () => (
-  <Box className="space-x-md">
-    <Button color="primary" size="xs">
-      Button Text
-    </Button>
-    <Button color="primary" size="sm">
-      Button Text
-    </Button>
-    <Button color="primary" size="md">
-      Button Text
-    </Button>
-    <Button color="primary" size="lg">
-      Button Text
-    </Button>
-    <Button color="primary" size="xl">
-      Button Text
-    </Button>
+export const Playground = (props) => <Button {...props} />;
+Playground.args = {
+  className: '',
+  color: 'white',
+  size: 'md',
+  children: 'Button Text',
+  round: false,
+};
+
+const Sample = (props) => {
+  const { children, ...others } = props;
+  const sizes = ['xs', 'sm', 'md', 'lg', 'xl'];
+
+  return (
+    <Box className="flex flex-row items-center justify-center gap-xl">
+      {sizes.map((size) => (
+        <Button size={size} {...others}>
+          {children}
+        </Button>
+      ))}
+    </Box>
+  );
+};
+Sample.args = {
+  className: '',
+  color: 'white',
+  children: 'Button Text',
+  round: false,
+};
+
+export const Primary = (props) => <Sample {...props} />;
+Primary.args = {
+  ...Sample.args,
+  color: 'primary',
+};
+
+export const Secondary = (props) => <Sample {...props} />;
+Secondary.args = {
+  ...Sample.args,
+  color: 'secondary',
+};
+
+export const White = (props) => <Sample {...props} />;
+White.args = {
+  ...Sample.args,
+  color: 'primary',
+};
+
+const Icon = (props) => (
+  <Box as="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
+    <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
+    <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
   </Box>
 );
 
-export const Secondary = () => (
-  <Box className="space-x-md">
-    <Button color="secondary" size="xs">
-      Button Text
-    </Button>
-    <Button color="secondary" size="sm">
-      Button Text
-    </Button>
-    <Button color="secondary" size="md">
-      Button Text
-    </Button>
-    <Button color="secondary" size="lg">
-      Button Text
-    </Button>
-    <Button color="secondary" size="xl">
-      Button Text
-    </Button>
-  </Box>
-);
+export const WithLeadingIcon = (props) => {
+  const { children, ...others } = props;
+  return (
+    <Sample {...others}>
+      <Icon />
+      {children}
+    </Sample>
+  );
+};
+WithLeadingIcon.args = {
+  ...Sample.args,
+  color: 'primary',
+};
 
-export const White = () => (
-  <Box className="space-x-md">
-    <Button color="white" size="xs">
-      Button Text
-    </Button>
-    <Button color="white" size="sm">
-      Button Text
-    </Button>
-    <Button color="white" size="md">
-      Button Text
-    </Button>
-    <Button color="white" size="lg">
-      Button Text
-    </Button>
-    <Button color="white" size="xl">
-      Button Text
-    </Button>
-  </Box>
-);
+export const WithTailingIcon = (props) => {
+  const { children, ...others } = props;
+  return (
+    <Sample {...others}>
+      {children}
+      <Icon />
+    </Sample>
+  );
+};
+WithTailingIcon.args = {
+  ...Sample.args,
+  color: 'primary',
+};
