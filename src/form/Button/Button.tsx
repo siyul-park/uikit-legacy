@@ -8,32 +8,32 @@ import ButtonProps from './ButtonProps';
 import ButtonTypeMap from './ButtonTypeMap';
 
 const sizeConfig: Record<NonNullable<ButtonProps['size']>, string> = {
-  xs: 'text-xs min-w-xs min-h-xs',
-  sm: 'text-sm min-w-sm min-h-sm',
-  md: 'text-md min-w-md min-h-md',
-  lg: 'text-lg min-w-lg min-h-lg',
-  xl: 'text-xl min-w-xl min-h-xl',
+  xs: 'text-xs min-w-5 min-h-5',
+  sm: 'text-sm min-w-7 min-h-7',
+  md: 'text-md min-w-9 min-h-9',
+  lg: 'text-lg min-w-11 min-h-11',
+  xl: 'text-xl min-w-14 min-h-14',
 };
 const childSizeConfig: Record<NonNullable<ButtonProps['size']>, string> = {
-  xs: 'h-xs_in',
-  sm: 'h-sm_in',
-  md: 'h-md_in',
-  lg: 'h-lg_in',
-  xl: 'h-xl_in',
+  xs: 'h-4',
+  sm: 'h-5',
+  md: 'h-6',
+  lg: 'h-7',
+  xl: 'h-7',
 };
 const paddingConfig: Record<NonNullable<ButtonProps['size']>, string> = {
-  xs: 'px-sm',
-  sm: 'px-sm',
-  md: 'px-md',
-  lg: 'px-lg',
-  xl: 'px-xl',
+  xs: 'px-2',
+  sm: 'px-2',
+  md: 'px-3',
+  lg: 'px-4',
+  xl: 'px-5',
 };
 const gapConfig: Record<NonNullable<ButtonProps['size']>, string> = {
-  xs: 'gap-xs',
-  sm: 'gap-sm',
-  md: 'gap-md',
-  lg: 'gap-md',
-  xl: 'gap-md',
+  xs: 'gap-1',
+  sm: 'gap-2',
+  md: 'gap-3',
+  lg: 'gap-4',
+  xl: 'gap-5',
 };
 const roundConfig: Record<NonNullable<ButtonProps['size']>, string> = {
   xs: 'rounded-md',

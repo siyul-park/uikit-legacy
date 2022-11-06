@@ -22,7 +22,7 @@ const Sample = (props) => {
   const sizes = ['xs', 'sm', 'md', 'lg', 'xl'];
 
   return (
-    <Box className="flex flex-row items-center justify-center gap-xl">
+    <Box className="flex flex-row items-center justify-center gap-5">
       {sizes.map((size) => (
         <Button size={size} {...others}>
           {children}
@@ -74,7 +74,7 @@ export const WithLeadingIcon = (props) => {
 };
 WithLeadingIcon.args = {
   ...Sample.args,
-  color: 'primary',
+  color: 'white',
 };
 
 export const WithTailingIcon = (props) => {

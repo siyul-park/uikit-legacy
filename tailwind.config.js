@@ -74,18 +74,6 @@ module.exports = {
       '7xl': '80rem',
     },
     spacing: {
-      xs: '0.25rem', // 1
-      sm: '0.5rem', // 2
-      md: '0.75rem', // 3
-      lg: '1rem', // 4
-      xl: '1.5rem', // 5
-
-      'xs/2': '0.125rem',
-      'sm/2': '0.25rem',
-      'md/2': '0.375rem',
-      'lg/2': '0.5rem',
-      'xl/2': '0.75rem',
-
       px: '1px',
       0: '0px',
       0.5: '0.125rem',
@@ -866,20 +854,8 @@ module.exports = {
     translate: ({ theme }) => ({
       ...theme('width'),
     }),
-    width: {
-      0: '0rem',
-
-      xs_in: '1rem',
-      sm_in: '1.25rem',
-      md_in: '1.5rem',
-      lg_in: '1.75rem',
-      xl_in: '1.75rem',
-
-      xs: '1.25rem',
-      sm: '1.75rem',
-      md: '2.25rem',
-      lg: '2.75rem',
-      xl: '3.25rem',
+    width: ({ theme }) => ({
+      ...theme('spacing'),
 
       auto: 'auto',
       '1/2': '50%',
@@ -913,7 +889,7 @@ module.exports = {
       min: 'min-content',
       max: 'max-content',
       fit: 'fit-content',
-    },
+    }),
     willChange: {
       auto: 'auto',
       scroll: 'scroll-position',
