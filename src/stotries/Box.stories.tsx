@@ -1,15 +1,15 @@
 import React from 'react';
 
-import Box from './Box';
+import Box from '@layout/Box';
 
 export default {
   title: 'layout | Box',
   component: Box,
 };
 
-export const Style = (props) => <Box {...props} />;
+export const Playground = (props) => <Box {...props} />;
 
-Style.args = {
+Playground.args = {
   as: 'div',
   className: 'border border-slate-800 border-dashed w-96 h-96',
 };

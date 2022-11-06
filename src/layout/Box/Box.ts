@@ -1,6 +1,6 @@
 import { createElement, forwardRef } from 'react';
 
-import { OverridableComponent } from '../type';
+import { OverridableComponent } from '@type';
 
 import BoxTypeMap from './BoxTypeMap';
 import BoxProps from './BoxProps';
