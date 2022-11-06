@@ -53,7 +53,7 @@ Secondary.args = {
 export const White = (props) => <Sample {...props} />;
 White.args = {
   ...Sample.args,
-  color: 'primary',
+  color: 'white',
 };
 
 const Icon = (props) => (
@@ -74,7 +74,7 @@ export const WithLeadingIcon = (props) => {
 };
 WithLeadingIcon.args = {
   ...Sample.args,
-  color: 'white',
+  color: 'primary',
 };
 
 export const WithTailingIcon = (props) => {
