@@ -5,13 +5,29 @@ import { EnvelopeIcon, PlusIcon } from '@heroicons/react/20/solid';
 import Box from '@layout/Box';
 import Button from '@form/Button';
 import CircleButton from '@form/CircleButton';
+import { IconButton } from '@form/index';
 
 export default {
   title: 'form | Button',
   component: Button,
 };
 
-export const Playground = (props) => <Button {...props} />;
+const groupClass = 'flex flex-row items-center justify-center gap-5 max-w-screen';
+
+export const Playground = (props) => {
+  const { children, rounded, ...rest } = props;
+
+  return (
+    <Box className={groupClass}>
+      <Button rounded={rounded} {...rest}>
+        {children}
+      </Button>
+      <IconButton {...rest}>
+        <PlusIcon />
+      </IconButton>
+    </Box>
+  );
+};
 Playground.args = {
   className: '',
   variant: 'contain',
@@ -32,7 +48,7 @@ const Sample = (props) => {
   const sizes = ['xs', 'sm', 'md', 'lg', 'xl'];
 
   return (
-    <Box className="flex flex-row items-center justify-center gap-5 max-w-screen">
+    <Box className={groupClass}>
       {sizes.map((size) => (
         <Button size={size} {...rest}>
           {children}
@@ -100,7 +116,7 @@ export const Circle = (props) => {
   const sizes = ['xs', 'sm', 'md', 'lg', 'xl'];
 
   return (
-    <Box className="flex flex-row items-center justify-center gap-5">
+    <Box className={groupClass}>
       {sizes.map((size) => (
         <CircleButton size={size} {...rest}>
           <PlusIcon />
