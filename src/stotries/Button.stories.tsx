@@ -32,7 +32,7 @@ const Sample = (props) => {
   const sizes = ['xs', 'sm', 'md', 'lg', 'xl'];
 
   return (
-    <Box className="flex flex-row items-center justify-center gap-5">
+    <Box className="flex flex-row items-center justify-center gap-5 max-w-screen">
       {sizes.map((size) => (
         <Button size={size} {...rest}>
           {children}

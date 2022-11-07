@@ -8,11 +8,11 @@ import BasicButtonProps from './BasicButtonProps';
 import BasicButtonTypeMap from './BasicButtonTypeMap';
 
 const sizeConfig: Record<NonNullable<BasicButtonProps['size']>, string> = {
-  xs: 'text-xs min-w-5 min-h-5',
-  sm: 'text-sm min-w-7 min-h-7',
-  md: 'text-md min-w-9 min-h-9',
-  lg: 'text-lg min-w-11 min-h-11',
-  xl: 'text-xl min-w-14 min-h-14',
+  xs: 'text-xs min-w-5 min-h-5 max-h-5',
+  sm: 'text-sm min-w-7 min-h-7 max-h-7',
+  md: 'text-md min-w-9 min-h-9 max-h-9',
+  lg: 'text-lg min-w-11 min-h-11 max-h-11',
+  xl: 'text-xl min-w-14 min-h-14 max-h-14',
 };
 const childSizeConfig: Record<NonNullable<BasicButtonProps['size']>, string> = {
   xs: 'h-4',
@@ -114,7 +114,7 @@ const BasicButton: OverridableComponent<BasicButtonTypeMap> = (props) => {
         'inline-flex flex-row items-center justify-center',
         gapConfig[size],
 
-        'font-semibold',
+        'font-semibold truncate',
 
         className,
       )}
