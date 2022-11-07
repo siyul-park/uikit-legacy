@@ -44,8 +44,8 @@ const roundConfig: Record<NonNullable<ButtonProps['size']>, string> = {
 };
 const transitionConfig = {
   text: {
-    primary: 'hover:brightness-75 active:brightness-75',
-    secondary: 'hover:brightness-75 active:brightness-75',
+    primary: 'hover:brightness-125 active:brightness-125',
+    secondary: 'hover:brightness-125 active:brightness-125',
     default: 'hover:text-slate-500 hover:fill-slate-500 active:text-slate-500 active:fill-slate-500',
   },
   outline: {
@@ -54,8 +54,8 @@ const transitionConfig = {
     default: 'hover:bg-slate-900/5 active:bg-slate-900/5',
   },
   contain: {
-    primary: 'hover:brightness-75 active:brightness-75',
-    secondary: 'hover:brightness-75 active:brightness-75',
+    primary: 'hover:brightness-125 active:brightness-125',
+    secondary: 'hover:brightness-125 active:brightness-125',
     default: 'hover:text-slate-700 hover:fill-slate-600 hover:bg-slate-50 active:text-slate-700 active:fill-slate-600 active:bg-slate-50',
   },
 };
