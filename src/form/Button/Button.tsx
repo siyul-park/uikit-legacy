@@ -79,7 +79,7 @@ const colorConfig = {
 const shapeConfig = {
   outline: {
     primary: 'border border-solid border-primary',
-    secondary: 'border border-solid border-primary/5',
+    secondary: 'border border-solid border-slate-900/5',
     default: 'border border-solid border-slate-900/5',
   },
 };
