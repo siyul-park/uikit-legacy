@@ -46,50 +46,50 @@ const transitionConfig = {
   text: {
     primary: 'hover:bg-slate-900/5 active:bg-slate-900/5',
     secondary: 'hover:bg-slate-900/5 active:bg-slate-900/5',
-    white: 'hover:bg-slate-900/5 active:bg-slate-900/5',
+    default: 'hover:bg-slate-900/5 active:bg-slate-900/5',
   },
   contain: {
     primary: 'hover:brightness-90 active:brightness-90',
     secondary: 'hover:brightness-75 active:brightness-75',
-    white: 'hover:text-slate-700 hover:fill-slate-600 hover:bg-slate-50 active:text-slate-700 active:fill-slate-600 active:bg-slate-50',
+    default: 'hover:text-slate-700 hover:fill-slate-600 hover:bg-slate-50 active:text-slate-700 active:fill-slate-600 active:bg-slate-50',
   },
 };
 const colorConfig = {
   text: {
     primary: 'text-primary fill-primary bg-transparent',
     secondary: 'text-primary fill-primary opacity-70 bg-transparent',
-    white: 'text-slate-600 fill-slate-600 bg-transparent',
+    default: 'text-slate-600 fill-slate-600 bg-transparent',
   },
   contain: {
     primary: 'text-slate-50 fill-slate-50 bg-primary',
     secondary: 'text-primary fill-primary bg-primary/5',
-    white: 'text-slate-600 fill-slate-600 bg-white',
+    default: 'text-slate-600 fill-slate-600 bg-white',
   },
 };
 const shapeConfig = {
   outline: {
     primary: 'border border-solid border-primary',
     secondary: 'border border-solid border-primary/5',
-    white: 'border border-solid border-slate-900/5',
+    default: 'border border-solid border-slate-900/5',
   },
 };
 const disableConfig = {
   text: {
     primary: 'opacity-40 pointer-events-none',
     secondary: 'opacity-30 pointer-events-none',
-    white: 'text-slate-400 fill-slate-400 pointer-events-none',
+    default: 'text-slate-400 fill-slate-400 pointer-events-none',
   },
   contain: {
     primary: 'opacity-40 pointer-events-none',
     secondary: 'opacity-30 pointer-events-none',
-    white: 'text-slate-400 fill-slate-400 pointer-events-none',
+    default: 'text-slate-400 fill-slate-400 pointer-events-none',
   },
 };
 
 const Button: OverridableComponent<ButtonTypeMap> = (props) => {
   const {
     variant = 'text',
-    color = 'white',
+    color = 'default',
     size = 'md',
     rounded = false,
     disabled = false,

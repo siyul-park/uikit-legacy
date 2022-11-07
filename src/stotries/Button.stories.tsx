@@ -13,7 +13,7 @@ export const Playground = (props) => <Button {...props} />;
 Playground.args = {
   className: '',
   variant: 'text',
-  color: 'white',
+  color: 'default',
   size: 'md',
   children: 'Button Text',
   rounded: false,
@@ -21,7 +21,7 @@ Playground.args = {
 };
 Playground.argTypes = {
   variant: { control: 'select', options: ['text', 'contain', 'outline'] },
-  color: { control: 'select', options: ['primary', 'secondary', 'white'] },
+  color: { control: 'select', options: ['primary', 'secondary', 'default'] },
   size: { control: 'select', options: ['xs', 'sm', 'md', 'lg', 'xl'] },
 };
 
@@ -56,12 +56,12 @@ Secondary.args = {
 };
 Secondary.argTypes = Sample.argTypes;
 
-export const White = (props) => <Sample {...props} />;
-White.args = {
+export const Default = (props) => <Sample {...props} />;
+Default.args = {
   ...Sample.args,
-  color: 'white',
+  color: 'default',
 };
-White.argTypes = Sample.argTypes;
+Default.argTypes = Sample.argTypes;
 
 const Icon = (props) => (
   <Box as="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
