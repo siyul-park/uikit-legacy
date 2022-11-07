@@ -15,11 +15,11 @@ const sizeConfig: Record<NonNullable<BasicButtonProps['size']>, string> = {
   xl: 'text-xl min-w-14 min-h-14 max-h-14',
 };
 const childSizeConfig: Record<NonNullable<BasicButtonProps['size']>, string> = {
-  xs: 'h-4',
-  sm: 'h-5',
-  md: 'h-6',
-  lg: 'h-7',
-  xl: 'h-7',
+  xs: 'text-xs h-4',
+  sm: 'text-sm h-5',
+  md: 'text-md h-6',
+  lg: 'text-lg h-7',
+  xl: 'text-xl h-7',
 };
 const gapConfig: Record<NonNullable<BasicButtonProps['size']>, string> = {
   xs: 'gap-1',
