@@ -27,13 +27,13 @@ Playground.argTypes = {
 };
 
 const Sample = (props) => {
-  const { children, ...others } = props;
+  const { children, ...rest } = props;
   const sizes = ['xs', 'sm', 'md', 'lg', 'xl'];
 
   return (
     <Box className="flex flex-row items-center justify-center gap-5">
       {sizes.map((size) => (
-        <Button size={size} {...others}>
+        <Button size={size} {...rest}>
           {children}
         </Button>
       ))}

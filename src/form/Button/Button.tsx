@@ -44,8 +44,8 @@ const roundConfig: Record<NonNullable<ButtonProps['size']>, string> = {
 };
 const transitionConfig = {
   text: {
-    primary: 'hover:opacity-80 active:opacity-80',
-    secondary: 'hover:opacity-60 active:opacity-60',
+    primary: 'hover:brightness-75 active:brightness-75',
+    secondary: 'hover:brightness-75 active:brightness-75',
     default: 'hover:text-slate-500 hover:fill-slate-500 active:text-slate-500 active:fill-slate-500',
   },
   outline: {
@@ -54,7 +54,7 @@ const transitionConfig = {
     default: 'hover:bg-slate-900/5 active:bg-slate-900/5',
   },
   contain: {
-    primary: 'hover:brightness-90 active:brightness-90',
+    primary: 'hover:brightness-75 active:brightness-75',
     secondary: 'hover:brightness-75 active:brightness-75',
     default: 'hover:text-slate-700 hover:fill-slate-600 hover:bg-slate-50 active:text-slate-700 active:fill-slate-600 active:bg-slate-50',
   },
@@ -62,7 +62,7 @@ const transitionConfig = {
 const colorConfig = {
   text: {
     primary: 'text-primary fill-primary bg-transparent',
-    secondary: 'text-primary fill-primary opacity-70 bg-transparent',
+    secondary: 'text-primary fill-primary opacity-75 bg-transparent',
     default: 'text-slate-600 fill-slate-600 bg-transparent',
   },
   outline: {
@@ -111,7 +111,7 @@ const Button: OverridableComponent<ButtonTypeMap> = (props) => {
     className,
     children,
 
-    ...others
+    ...rest
   } = props;
 
   return (
@@ -136,7 +136,7 @@ const Button: OverridableComponent<ButtonTypeMap> = (props) => {
         className,
       )}
       disabled={disabled}
-      {...others}
+      {...rest}
     >
       {React.Children.map(children, (child) => {
         if (!React.isValidElement(child)) {
