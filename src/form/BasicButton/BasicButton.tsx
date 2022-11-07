@@ -52,8 +52,8 @@ function colors(color: string) {
   return {
     text: {
       primary: `text-${color} fill-${color} text-${color}-800 fill-${color}-800 bg-transparent`,
-      secondary: `text-${color}/75 fill-${color}/75 text-${color}-700 fill-${color}-700 bg-transparent`,
-      tertiary: `text-${color}/80 fill-${color}/80 text-${color}-600 fill-${color}-600 bg-transparent`,
+      secondary: `text-${color}/80 fill-${color}/80 text-${color}-700 fill-${color}-700 bg-transparent`,
+      tertiary: `text-${color}/60 fill-${color}/60 text-${color}-600 fill-${color}-600 bg-transparent`,
     },
     outline: {
       primary: `text-${color} fill-${color} bg-transparent`,
