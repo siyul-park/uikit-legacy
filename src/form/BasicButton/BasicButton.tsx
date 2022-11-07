@@ -34,26 +34,26 @@ function transitions(color: string) {
     text: {
       primary: 'hover:brightness-150 active:brightness-150',
       secondary: 'hover:brightness-150 active:brightness-150',
-      tertiary: `hover:text-${color} hover:fill-${color} active:text-${color} active:fill-${color} opacity-75`,
+      tertiary: 'hover:brightness-150 active:brightness-150',
     },
     outline: {
-      primary: `hover:bg-${color}/5 active:bg-${color}/5`,
-      secondary: `hover:bg-${color}/5 active:bg-${color}/5`,
-      tertiary: `hover:bg-${color}/5 active:bg-${color}/5`,
+      primary: `hover:bg-${color}-900/5 active:bg-${color}-900/5 hover:bg-${color}/5 active:bg-${color}/5`,
+      secondary: `hover:bg-${color}-900/5 active:bg-${color}-900/5 hover:bg-${color}/5 active:bg-${color}/5`,
+      tertiary: `hover:bg-${color}-900/5 active:bg-${color}-900/5 hover:bg-${color}/5 active:bg-${color}/5`,
     },
     contain: {
       primary: 'hover:brightness-150 active:brightness-150',
       secondary: 'hover:brightness-150 active:brightness-150',
-      tertiary: `hover:bg-${color}/5 active:bg-${color}/5`,
+      tertiary: `hover:bg-${color}-900/5 active:bg-${color}-900/5 hover:bg-${color}/5 active:bg-${color}/5`,
     },
   };
 }
 function colors(color: string) {
   return {
     text: {
-      primary: `text-${color} fill-${color} bg-transparent`,
-      secondary: `text-${color} fill-${color} opacity-75 bg-transparent`,
-      tertiary: 'text-slate-600 fill-slate-600 bg-transparent',
+      primary: `text-${color} fill-${color} text-${color}-800 fill-${color}-800 bg-transparent`,
+      secondary: `text-${color}/75 fill-${color}/75 text-${color}-700 fill-${color}-700 bg-transparent`,
+      tertiary: `text-${color}/80 fill-${color}/80 text-${color}-600 fill-${color}-600 bg-transparent`,
     },
     outline: {
       primary: `text-${color} fill-${color} bg-transparent`,
@@ -61,9 +61,9 @@ function colors(color: string) {
       tertiary: 'text-slate-600 fill-slate-600 bg-transparent',
     },
     contain: {
-      primary: `text-slate-50 fill-slate-50 bg-${color}`,
-      secondary: `text-${color} fill-${color} bg-${color}/5`,
-      tertiary: 'text-slate-600 fill-slate-600',
+      primary: `text-slate-50 fill-slate-50 bg-${color} bg-${color}-800`,
+      secondary: `text-${color} fill-${color} text-${color}-800 fill-${color}-800 bg-${color}/5 bg-${color}-800/5`,
+      tertiary: `text-${color}/80 fill-${color}/80 text-${color}-600 fill-${color}-600 bg-transparent`,
     },
   };
 }
@@ -79,15 +79,15 @@ function shapes(color: string) {
 
 const transitionConfig = {
   primary: transitions('primary'),
-  nature: transitions('slate-800'),
+  nature: transitions('slate'),
 };
 const colorConfig = {
   primary: colors('primary'),
-  nature: colors('slate-800'),
+  nature: colors('slate'),
 };
 const shapeConfig = {
   primary: shapes('primary'),
-  nature: shapes('slate-800'),
+  nature: shapes('slate'),
 };
 
 const BasicButton: OverridableComponent<BasicButtonTypeMap> = (props) => {
