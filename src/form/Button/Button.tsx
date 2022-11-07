@@ -44,6 +44,11 @@ const roundConfig: Record<NonNullable<ButtonProps['size']>, string> = {
 };
 const transitionConfig = {
   text: {
+    primary: 'hover:opacity-80 active:opacity-80',
+    secondary: 'hover:opacity-60 active:opacity-60',
+    default: 'hover:text-slate-500 hover:fill-slate-500 active:text-slate-500 active:fill-slate-500',
+  },
+  outline: {
     primary: 'hover:bg-slate-900/5 active:bg-slate-900/5',
     secondary: 'hover:bg-slate-900/5 active:bg-slate-900/5',
     default: 'hover:bg-slate-900/5 active:bg-slate-900/5',
@@ -63,7 +68,7 @@ const colorConfig = {
   contain: {
     primary: 'text-slate-50 fill-slate-50 bg-primary',
     secondary: 'text-primary fill-primary bg-primary/5',
-    default: 'text-slate-600 fill-slate-600 bg-white',
+    default: 'text-slate-600 fill-slate-600',
   },
 };
 const shapeConfig = {
@@ -99,15 +104,15 @@ const Button: OverridableComponent<ButtonTypeMap> = (props) => {
     ...others
   } = props;
 
-  const colorVariant = variant === 'contain' ? 'contain' : 'text';
+  const mergedVariant = variant === 'contain' ? 'contain' : 'text';
 
   return (
     <Box
       as="button"
       className={classnames(
-        colorConfig[colorVariant][color],
+        colorConfig[mergedVariant][color],
         'transition-colors',
-        disabled ? disableConfig[colorVariant][color] : transitionConfig[colorVariant][color],
+        disabled ? disableConfig[mergedVariant][color] : transitionConfig[variant][color],
 
         rounded ? 'rounded-full' : roundConfig[size],
         'box-border',
