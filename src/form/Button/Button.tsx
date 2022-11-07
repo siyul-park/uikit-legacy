@@ -42,14 +42,32 @@ const roundConfig: Record<NonNullable<ButtonProps['size']>, string> = {
   lg: 'rounded-lg',
   xl: 'rounded-xl',
 };
-const colorConfig: Record<NonNullable<ButtonProps['color']>, string> = {
-  primary: 'text-slate-50 fill-slate-50 bg-primary transition-colors hover:brightness-90 active:brightness-90',
-  secondary: 'text-primary fill-primary bg-secondary transition-colors hover:brightness-90 active:brightness-90',
-  white: 'text-slate-600 fill-slate-600 bg-white transition-colors hover:text-slate-700 hover:fill-slate-600 hover:bg-slate-50',
+const defaultHover = 'transition-colors hover:brightness-90 active:brightness-90';
+const colorConfig = {
+  text: {
+    primary: classnames('text-primary fill-primary bg-transparent', defaultHover),
+    secondary: classnames('text-secondary fill-secondary bg-transparent', defaultHover),
+    white: classnames('text-slate-600 fill-slate-600 bg-transparent transition-colors', 'transition-colors hover:text-slate-700 hover:fill-slate-600 hover:bg-slate-900/5'),
+  },
+  contain: {
+    primary: classnames('text-slate-50 fill-slate-50 bg-primary', defaultHover),
+    secondary: classnames('text-primary fill-primary bg-secondary', defaultHover),
+    white: classnames('text-slate-600 fill-slate-600 bg-white', 'transition-colors hover:text-slate-700 hover:fill-slate-600 hover:bg-slate-50'),
+  },
+};
+const shapeConfig: Record<NonNullable<ButtonProps['variant']>, Record<NonNullable<ButtonProps['color']>, string>> = {
+  text: colorConfig.text,
+  contain: colorConfig.contain,
+  outline: {
+    primary: classnames(colorConfig.text.primary, 'border border-solid border-primary'),
+    secondary: classnames(colorConfig.text.secondary, 'border border-solid border-secondary'),
+    white: classnames(colorConfig.text.white, 'border border-solid border-slate-900/5'),
+  },
 };
 
 const Button: OverridableComponent<ButtonTypeMap> = (props) => {
   const {
+    variant = 'text',
     color = 'white',
     size = 'md',
     round = false,
@@ -65,9 +83,8 @@ const Button: OverridableComponent<ButtonTypeMap> = (props) => {
         sizeConfig[size],
         paddingConfig[size],
         round ? 'rounded-full' : roundConfig[size],
-        colorConfig[color],
+        shapeConfig[variant][color],
         'box-border',
-        color === 'white' ? 'border border-solid border-slate-900/5' : null,
         'inline-flex flex-row items-center justify-center',
         gapConfig[size],
         'font-semibold',
@@ -80,7 +97,8 @@ const Button: OverridableComponent<ButtonTypeMap> = (props) => {
           return child;
         }
         const c = child as React.ReactElement;
-        return React.cloneElement(child, {
+
+        return React.cloneElement(c, {
           ...c.props,
           className: classnames(
             childSizeConfig[size],

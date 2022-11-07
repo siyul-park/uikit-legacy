@@ -1,4 +1,5 @@
 import React from 'react';
+import _ from 'lodash';
 
 import Box from '@layout/Box';
 import Button from '@form/Button';
@@ -11,10 +12,16 @@ export default {
 export const Playground = (props) => <Button {...props} />;
 Playground.args = {
   className: '',
+  variant: 'text',
   color: 'white',
   size: 'md',
   children: 'Button Text',
   round: false,
+};
+Playground.argTypes = {
+  variant: { control: 'select', options: ['text', 'contain', 'outline'] },
+  color: { control: 'select', options: ['primary', 'secondary', 'white'] },
+  size: { control: 'select', options: ['xs', 'sm', 'md', 'lg', 'xl'] },
 };
 
 const Sample = (props) => {
@@ -31,30 +38,29 @@ const Sample = (props) => {
     </Box>
   );
 };
-Sample.args = {
-  className: '',
-  color: 'white',
-  children: 'Button Text',
-  round: false,
-};
+Sample.args = _.omit(Playground.args, 'size');
+Sample.argTypes = _.omit(Playground.argTypes, 'size');
 
 export const Primary = (props) => <Sample {...props} />;
 Primary.args = {
   ...Sample.args,
   color: 'primary',
 };
+Primary.argTypes = Sample.argTypes;
 
 export const Secondary = (props) => <Sample {...props} />;
 Secondary.args = {
   ...Sample.args,
   color: 'secondary',
 };
+Secondary.argTypes = Sample.argTypes;
 
 export const White = (props) => <Sample {...props} />;
 White.args = {
   ...Sample.args,
   color: 'white',
 };
+White.argTypes = Sample.argTypes;
 
 const Icon = (props) => (
   <Box as="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
@@ -76,6 +82,7 @@ WithLeadingIcon.args = {
   ...Sample.args,
   color: 'primary',
 };
+WithLeadingIcon.argTypes = Sample.argTypes;
 
 export const WithTailingIcon = (props) => {
   const { children, ...others } = props;
@@ -90,3 +97,4 @@ WithTailingIcon.args = {
   ...Sample.args,
   color: 'primary',
 };
+WithTailingIcon.argTypes = Sample.argTypes;
