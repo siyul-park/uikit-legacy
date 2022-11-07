@@ -30,10 +30,10 @@ const paddingConfig: Record<NonNullable<ButtonProps['size']>, string> = {
 };
 const gapConfig: Record<NonNullable<ButtonProps['size']>, string> = {
   xs: 'gap-1',
-  sm: 'gap-2',
-  md: 'gap-3',
-  lg: 'gap-4',
-  xl: 'gap-5',
+  sm: 'gap-1',
+  md: 'gap-2',
+  lg: 'gap-3',
+  xl: 'gap-3',
 };
 const roundConfig: Record<NonNullable<ButtonProps['size']>, string> = {
   xs: 'rounded-md',
@@ -42,26 +42,36 @@ const roundConfig: Record<NonNullable<ButtonProps['size']>, string> = {
   lg: 'rounded-lg',
   xl: 'rounded-xl',
 };
-const defaultHover = 'transition-colors hover:brightness-90 active:brightness-90';
-const colorConfig = {
+const transitionConfig = {
   text: {
-    primary: classnames('text-primary fill-primary bg-transparent', defaultHover),
-    secondary: classnames('text-primary fill-primary opacity-70 bg-transparent', defaultHover),
-    white: classnames('text-slate-600 fill-slate-600 bg-transparent transition-colors', 'transition-colors hover:text-slate-700 hover:fill-slate-600 hover:bg-slate-900/5'),
+    primary: 'hover:bg-slate-900/5',
+    secondary: 'hover:bg-slate-900/5',
+    white: 'hover:bg-slate-900/5',
   },
   contain: {
-    primary: classnames('text-slate-50 fill-slate-50 bg-primary', defaultHover),
-    secondary: classnames('text-primary fill-primary bg-primary/5', defaultHover),
-    white: classnames('text-slate-600 fill-slate-600 bg-white', 'transition-colors hover:text-slate-700 hover:fill-slate-600 hover:bg-slate-50'),
+    primary: 'hover:brightness-90',
+    secondary: 'hover:brightness-75',
+    white: 'hover:text-slate-700 hover:fill-slate-600 hover:bg-slate-50',
   },
 };
-const shapeConfig: Record<NonNullable<ButtonProps['variant']>, Record<NonNullable<ButtonProps['color']>, string>> = {
-  text: colorConfig.text,
-  contain: colorConfig.contain,
+const colorConfig = {
+  text: {
+    primary: 'text-primary fill-primary bg-transparent',
+    secondary: 'text-primary fill-primary opacity-70 bg-transparent',
+    white: 'text-slate-600 fill-slate-600 bg-transparent',
+  },
+  contain: {
+    primary: 'text-slate-50 fill-slate-50 bg-primary',
+    secondary: 'text-primary fill-primary bg-primary/5',
+    white: 'text-slate-600 fill-slate-600 bg-white',
+  },
+};
+
+const shapeConfig = {
   outline: {
-    primary: classnames(colorConfig.text.primary, 'border border-solid border-primary'),
-    secondary: classnames(colorConfig.text.secondary, 'border border-solid border-primary/5'),
-    white: classnames(colorConfig.text.white, 'border border-solid border-slate-900/5'),
+    primary: 'border border-solid border-primary',
+    secondary: 'border border-solid border-primary/5',
+    white: 'border border-solid border-slate-900/5',
   },
 };
 
@@ -80,14 +90,21 @@ const Button: OverridableComponent<ButtonTypeMap> = (props) => {
     <Box
       as="button"
       className={classnames(
+        colorConfig[variant === 'contain' ? 'contain' : 'text'][color],
+        'transition-colors',
+        transitionConfig[variant === 'contain' ? 'contain' : 'text'][color],
+
+        round ? 'rounded-full' : roundConfig[size],
+        'box-border',
+        shapeConfig[variant]?.[color],
+
         sizeConfig[size],
         paddingConfig[size],
-        round ? 'rounded-full' : roundConfig[size],
-        shapeConfig[variant][color],
-        'box-border',
         'inline-flex flex-row items-center justify-center',
         gapConfig[size],
+
         'font-semibold',
+
         className,
       )}
       {...others}
