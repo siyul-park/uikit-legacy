@@ -1,3 +1,6 @@
+export { default as BasicButton } from './BasicButton';
+export type { BasicButtonProps, BasicButtonTypeMap } from './BasicButton';
+
 export { default as Button } from './Button';
 export type { ButtonProps, ButtonTypeMap } from './Button';
 

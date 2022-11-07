@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 
-import { Box } from '@layout/index';
+import Box from '@layout/Box';
 import { OverridableComponent } from '@type';
 
 import BasicButtonProps from './BasicButtonProps';
@@ -28,69 +28,73 @@ const gapConfig: Record<NonNullable<BasicButtonProps['size']>, string> = {
   lg: 'gap-3',
   xl: 'gap-3',
 };
+
+function transitions(color: string) {
+  return {
+    text: {
+      primary: 'hover:brightness-150 active:brightness-150',
+      secondary: 'hover:brightness-150 active:brightness-150',
+      tertiary: `hover:text-${color} hover:fill-${color} active:text-${color} active:fill-${color} opacity-75`,
+    },
+    outline: {
+      primary: `hover:bg-${color}/5 active:bg-${color}/5`,
+      secondary: `hover:bg-${color}/5 active:bg-${color}/5`,
+      tertiary: `hover:bg-${color}/5 active:bg-${color}/5`,
+    },
+    contain: {
+      primary: 'hover:brightness-150 active:brightness-150',
+      secondary: 'hover:brightness-150 active:brightness-150',
+      tertiary: `hover:bg-${color}/5 active:bg-${color}/5`,
+    },
+  };
+}
+function colors(color: string) {
+  return {
+    text: {
+      primary: `text-${color} fill-${color} bg-transparent`,
+      secondary: `text-${color} fill-${color} opacity-75 bg-transparent`,
+      tertiary: 'text-slate-600 fill-slate-600 bg-transparent',
+    },
+    outline: {
+      primary: `text-${color} fill-${color} bg-transparent`,
+      secondary: `text-${color} fill-${color} bg-transparent`,
+      tertiary: 'text-slate-600 fill-slate-600 bg-transparent',
+    },
+    contain: {
+      primary: `text-slate-50 fill-slate-50 bg-${color}`,
+      secondary: `text-${color} fill-${color} bg-${color}/5`,
+      tertiary: 'text-slate-600 fill-slate-600',
+    },
+  };
+}
+function shapes(color: string) {
+  return {
+    outline: {
+      primary: `border border-solid border-${color}`,
+      secondary: 'border border-solid border-slate-900/5',
+      tertiary: 'border border-solid border-slate-900/5',
+    },
+  };
+}
+
 const transitionConfig = {
-  text: {
-    primary: 'hover:brightness-125 active:brightness-125',
-    secondary: 'hover:brightness-125 active:brightness-125',
-    default: 'hover:text-slate-500 hover:fill-slate-500 active:text-slate-500 active:fill-slate-500',
-  },
-  outline: {
-    primary: 'hover:bg-slate-900/5 active:bg-slate-900/5',
-    secondary: 'hover:bg-slate-900/5 active:bg-slate-900/5',
-    default: 'hover:bg-slate-900/5 active:bg-slate-900/5',
-  },
-  contain: {
-    primary: 'hover:brightness-125 active:brightness-125',
-    secondary: 'hover:brightness-125 active:brightness-125',
-    default: 'hover:text-slate-700 hover:fill-slate-600 hover:bg-slate-900/5 active:text-slate-700 active:fill-slate-600 active:bg-slate-900/5',
-  },
+  primary: transitions('primary'),
+  nature: transitions('slate-800'),
 };
 const colorConfig = {
-  text: {
-    primary: 'text-primary fill-primary bg-transparent',
-    secondary: 'text-primary fill-primary opacity-75 bg-transparent',
-    default: 'text-slate-600 fill-slate-600 bg-transparent',
-  },
-  outline: {
-    primary: 'text-primary fill-primary bg-transparent',
-    secondary: 'text-primary fill-primary bg-transparent',
-    default: 'text-slate-600 fill-slate-600 bg-transparent',
-  },
-  contain: {
-    primary: 'text-slate-50 fill-slate-50 bg-primary',
-    secondary: 'text-primary fill-primary bg-primary/5',
-    default: 'text-slate-600 fill-slate-600',
-  },
+  primary: colors('primary'),
+  nature: colors('slate-800'),
 };
 const shapeConfig = {
-  outline: {
-    primary: 'border border-solid border-primary',
-    secondary: 'border border-solid border-slate-900/5',
-    default: 'border border-solid border-slate-900/5',
-  },
-};
-const disableConfig = {
-  text: {
-    primary: 'opacity-40 pointer-events-none',
-    secondary: 'opacity-30 pointer-events-none',
-    default: 'text-slate-400 fill-slate-400 pointer-events-none',
-  },
-  outline: {
-    primary: 'opacity-40 pointer-events-none',
-    secondary: 'opacity-40 pointer-events-none',
-    default: 'text-slate-400 fill-slate-400 pointer-events-none',
-  },
-  contain: {
-    primary: 'opacity-40 pointer-events-none',
-    secondary: 'opacity-30 pointer-events-none',
-    default: 'text-slate-400 fill-slate-400 pointer-events-none',
-  },
+  primary: shapes('primary'),
+  nature: shapes('slate-800'),
 };
 
 const BasicButton: OverridableComponent<BasicButtonTypeMap> = (props) => {
   const {
     variant = 'contain',
-    color = 'default',
+    importance = 'primary',
+    color = 'primary',
     size = 'md',
     disabled = false,
     className,
@@ -103,12 +107,12 @@ const BasicButton: OverridableComponent<BasicButtonTypeMap> = (props) => {
     <Box
       as="button"
       className={classnames(
-        colorConfig[variant][color],
+        colorConfig[color][variant][importance],
         'transition-colors',
-        disabled ? disableConfig[variant][color] : transitionConfig[variant][color],
+        disabled ? 'opacity-40 pointer-events-none' : transitionConfig[color][variant][importance],
 
         'box-border',
-        shapeConfig[variant]?.[color],
+        shapeConfig[color][variant]?.[importance],
 
         sizeConfig[size],
         'inline-flex flex-row items-center justify-center',

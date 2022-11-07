@@ -111,6 +111,7 @@
   "dependencies": {
     "@heroicons/react": "^2.0.13",
     "classnames": "^2.3.2",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "tailwind-safelist-generator": "^1.0.0"
   }
 }

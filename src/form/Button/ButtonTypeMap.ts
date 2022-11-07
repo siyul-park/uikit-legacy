@@ -4,7 +4,8 @@ import { BoxTypeMap } from '@layout/Box';
 
 type ButtonTypeMap<P = {}, D extends React.ElementType = 'button'> = BoxTypeMap<P & {
   variant?: 'text' | 'contain' | 'outline';
-  color?: 'primary' | 'secondary' | 'default';
+  importance?: 'primary' | 'secondary' | 'tertiary';
+  color?: 'primary' | 'nature';
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   rounded?: boolean;
   disabled?: boolean;
