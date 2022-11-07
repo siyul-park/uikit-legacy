@@ -22,7 +22,7 @@ const childSizeConfig: Record<NonNullable<ButtonProps['size']>, string> = {
   xl: 'h-7',
 };
 const paddingConfig: Record<NonNullable<ButtonProps['size']>, string> = {
-  xs: 'px-2',
+  xs: 'px-1',
   sm: 'px-2',
   md: 'px-3',
   lg: 'px-4',
