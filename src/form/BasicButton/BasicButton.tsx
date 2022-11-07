@@ -42,7 +42,7 @@ const transitionConfig = {
   contain: {
     primary: 'hover:brightness-125 active:brightness-125',
     secondary: 'hover:brightness-125 active:brightness-125',
-    default: 'hover:text-slate-700 hover:fill-slate-600 hover:bg-slate-50 active:text-slate-700 active:fill-slate-600 active:bg-slate-50',
+    default: 'hover:text-slate-700 hover:fill-slate-600 hover:bg-slate-900/5 active:text-slate-700 active:fill-slate-600 active:bg-slate-900/5',
   },
 };
 const colorConfig = {
