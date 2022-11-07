@@ -60,21 +60,21 @@ const Sample = (props) => {
 Sample.args = _.omit(Playground.args, 'size');
 Sample.argTypes = _.omit(Playground.argTypes, 'size');
 
-export const Primary = (props) => <Sample {...props} />;
+export const Primary = Sample;
 Primary.args = {
   ...Sample.args,
   color: 'primary',
 };
 Primary.argTypes = Sample.argTypes;
 
-export const Secondary = (props) => <Sample {...props} />;
+export const Secondary = Sample;
 Secondary.args = {
   ...Sample.args,
   color: 'secondary',
 };
 Secondary.argTypes = Sample.argTypes;
 
-export const Default = (props) => <Sample {...props} />;
+export const Default = Sample;
 Default.args = {
   ...Sample.args,
   color: 'default',
@@ -83,12 +83,13 @@ Default.argTypes = Sample.argTypes;
 
 export const WithLeadingIcon = (props) => {
   const { children, ...others } = props;
-  return (
-    <Sample {...others}>
-      <EnvelopeIcon />
-      {children}
-    </Sample>
-  );
+  return Sample({
+    children: [
+      <EnvelopeIcon />,
+      children,
+    ],
+    ...others,
+  });
 };
 WithLeadingIcon.args = {
   ...Sample.args,
@@ -98,12 +99,13 @@ WithLeadingIcon.argTypes = Sample.argTypes;
 
 export const WithTailingIcon = (props) => {
   const { children, ...others } = props;
-  return (
-    <Sample {...others}>
-      {children}
-      <EnvelopeIcon />
-    </Sample>
-  );
+  return Sample({
+    children: [
+      children,
+      <EnvelopeIcon />,
+    ],
+    ...others,
+  });
 };
 WithTailingIcon.args = {
   ...Sample.args,
