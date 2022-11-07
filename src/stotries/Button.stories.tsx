@@ -4,8 +4,7 @@ import { EnvelopeIcon, PlusIcon } from '@heroicons/react/20/solid';
 
 import Box from '@layout/Box';
 import Button from '@form/Button';
-import CircleButton from '@form/CircleButton';
-import { IconButton } from '@form/index';
+import IconButton from '@form/IconButton';
 
 export default {
   title: 'form | Button',
@@ -15,11 +14,11 @@ export default {
 const groupClass = 'flex flex-row items-center justify-center gap-5';
 
 export const Playground = (props) => {
-  const { children, rounded, ...rest } = props;
+  const { children, ...rest } = props;
 
   return (
     <Box className={groupClass}>
-      <Button rounded={rounded} {...rest}>
+      <Button {...rest}>
         {children}
       </Button>
       <IconButton {...rest}>
@@ -102,10 +101,7 @@ export const WithLeadingIcon = (props) => {
     ...others,
   });
 };
-WithLeadingIcon.args = {
-  ...Sample.args,
-  importance: 'primary',
-};
+WithLeadingIcon.args = Sample.args;
 WithLeadingIcon.argTypes = Sample.argTypes;
 
 export const WithTailingIcon = (props) => {
@@ -118,28 +114,25 @@ export const WithTailingIcon = (props) => {
     ...others,
   });
 };
-WithTailingIcon.args = {
-  ...Sample.args,
-  importance: 'primary',
-};
+WithTailingIcon.args = Sample.args;
 WithTailingIcon.argTypes = Sample.argTypes;
 
-export const Circle = (props) => {
+export const Icon = (props) => {
   const { ...rest } = props;
   const sizes = ['xs', 'sm', 'md', 'lg', 'xl'];
 
   return (
     <Box className={groupClass}>
       {sizes.map((size) => (
-        <CircleButton size={size} {...rest}>
+        <IconButton size={size} {...rest}>
           <PlusIcon />
-        </CircleButton>
+        </IconButton>
       ))}
     </Box>
   );
 };
-Circle.args = _.omit(Playground.args, 'size', 'children', 'rounded');
-Circle.argTypes = _.omit(Playground.argTypes, 'size', 'children', 'rounded');
+Icon.args = _.omit(Playground.args, 'size', 'children');
+Icon.argTypes = _.omit(Playground.argTypes, 'size', 'children');
 
 export const Combined = (props) => {
   const {
@@ -154,9 +147,9 @@ export const Combined = (props) => {
   return (
     <Button size={size} rounded={rounded} {...rest}>
       {children}
-      <CircleButton size={sizes[i]} {...rest}>
+      <IconButton size={sizes[i]} {...rest}>
         <PlusIcon />
-      </CircleButton>
+      </IconButton>
     </Button>
   );
 };
