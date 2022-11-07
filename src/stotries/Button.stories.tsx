@@ -1,9 +1,10 @@
 import React from 'react';
 import _ from 'lodash';
-import { EnvelopeIcon } from '@heroicons/react/20/solid';
+import { EnvelopeIcon, PlusIcon } from '@heroicons/react/20/solid';
 
 import Box from '@layout/Box';
 import Button from '@form/Button';
+import CircleButton from '@form/CircleButton';
 
 export default {
   title: 'form | Button',
@@ -13,7 +14,7 @@ export default {
 export const Playground = (props) => <Button {...props} />;
 Playground.args = {
   className: '',
-  variant: 'text',
+  variant: 'contain',
   color: 'default',
   size: 'md',
   children: 'Button Text',
@@ -93,3 +94,20 @@ WithTailingIcon.args = {
   color: 'primary',
 };
 WithTailingIcon.argTypes = Sample.argTypes;
+
+export const Circle = (props) => {
+  const { ...rest } = props;
+  const sizes = ['xs', 'sm', 'md', 'lg', 'xl'];
+
+  return (
+    <Box className="flex flex-row items-center justify-center gap-5">
+      {sizes.map((size) => (
+        <CircleButton size={size} {...rest}>
+          <PlusIcon />
+        </CircleButton>
+      ))}
+    </Box>
+  );
+};
+Circle.args = _.omit(Playground.args, 'size', 'children', 'rounded');
+Circle.argTypes = _.omit(Playground.argTypes, 'size', 'children', 'rounded');
