@@ -16,7 +16,8 @@ Playground.args = {
   color: 'white',
   size: 'md',
   children: 'Button Text',
-  round: false,
+  rounded: false,
+  disabled: false,
 };
 Playground.argTypes = {
   variant: { control: 'select', options: ['text', 'contain', 'outline'] },

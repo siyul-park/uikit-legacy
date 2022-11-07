@@ -6,7 +6,8 @@ type ButtonTypeMap<P = {}, D extends React.ElementType = 'button'> = BoxTypeMap<
   variant?: 'text' | 'contain' | 'outline';
   color?: 'primary' | 'secondary' | 'white';
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-  round?: boolean;
+  rounded?: boolean;
+  disabled?: boolean;
 }, D>
 
 export default ButtonTypeMap;

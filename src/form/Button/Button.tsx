@@ -66,12 +66,23 @@ const colorConfig = {
     white: 'text-slate-600 fill-slate-600 bg-white',
   },
 };
-
 const shapeConfig = {
   outline: {
     primary: 'border border-solid border-primary',
     secondary: 'border border-solid border-primary/5',
     white: 'border border-solid border-slate-900/5',
+  },
+};
+const disableConfig = {
+  text: {
+    primary: 'opacity-40 pointer-events-none',
+    secondary: 'opacity-30 pointer-events-none',
+    white: 'text-slate-400 fill-slate-400 pointer-events-none',
+  },
+  contain: {
+    primary: 'opacity-40 pointer-events-none',
+    secondary: 'opacity-30 pointer-events-none',
+    white: 'text-slate-400 fill-slate-400 pointer-events-none',
   },
 };
 
@@ -80,21 +91,25 @@ const Button: OverridableComponent<ButtonTypeMap> = (props) => {
     variant = 'text',
     color = 'white',
     size = 'md',
-    round = false,
+    rounded = false,
+    disabled = false,
     className,
     children,
+
     ...others
   } = props;
+
+  const colorVariant = variant === 'contain' ? 'contain' : 'text';
 
   return (
     <Box
       as="button"
       className={classnames(
-        colorConfig[variant === 'contain' ? 'contain' : 'text'][color],
+        colorConfig[colorVariant][color],
         'transition-colors',
-        transitionConfig[variant === 'contain' ? 'contain' : 'text'][color],
+        disabled ? disableConfig[colorVariant][color] : transitionConfig[colorVariant][color],
 
-        round ? 'rounded-full' : roundConfig[size],
+        rounded ? 'rounded-full' : roundConfig[size],
         'box-border',
         shapeConfig[variant]?.[color],
 
@@ -107,6 +122,7 @@ const Button: OverridableComponent<ButtonTypeMap> = (props) => {
 
         className,
       )}
+      disabled={disabled}
       {...others}
     >
       {React.Children.map(children, (child) => {
