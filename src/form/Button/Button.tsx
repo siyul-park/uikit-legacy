@@ -65,6 +65,11 @@ const colorConfig = {
     secondary: 'text-primary fill-primary opacity-70 bg-transparent',
     default: 'text-slate-600 fill-slate-600 bg-transparent',
   },
+  outline: {
+    primary: 'text-primary fill-primary bg-transparent',
+    secondary: 'text-primary fill-primary bg-transparent',
+    default: 'text-slate-600 fill-slate-600 bg-transparent',
+  },
   contain: {
     primary: 'text-slate-50 fill-slate-50 bg-primary',
     secondary: 'text-primary fill-primary bg-primary/5',
@@ -82,6 +87,11 @@ const disableConfig = {
   text: {
     primary: 'opacity-40 pointer-events-none',
     secondary: 'opacity-30 pointer-events-none',
+    default: 'text-slate-400 fill-slate-400 pointer-events-none',
+  },
+  outline: {
+    primary: 'opacity-40 pointer-events-none',
+    secondary: 'opacity-40 pointer-events-none',
     default: 'text-slate-400 fill-slate-400 pointer-events-none',
   },
   contain: {
@@ -104,15 +114,13 @@ const Button: OverridableComponent<ButtonTypeMap> = (props) => {
     ...others
   } = props;
 
-  const mergedVariant = variant === 'contain' ? 'contain' : 'text';
-
   return (
     <Box
       as="button"
       className={classnames(
-        colorConfig[mergedVariant][color],
+        colorConfig[variant][color],
         'transition-colors',
-        disabled ? disableConfig[mergedVariant][color] : transitionConfig[variant][color],
+        disabled ? disableConfig[variant][color] : transitionConfig[variant][color],
 
         rounded ? 'rounded-full' : roundConfig[size],
         'box-border',
