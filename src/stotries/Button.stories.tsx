@@ -127,3 +127,25 @@ export const Circle = (props) => {
 };
 Circle.args = _.omit(Playground.args, 'size', 'children', 'rounded');
 Circle.argTypes = _.omit(Playground.argTypes, 'size', 'children', 'rounded');
+
+export const Combined = (props) => {
+  const {
+    children, rounded, size, ...rest
+  } = props;
+  const sizes = ['xs', 'sm', 'md', 'lg', 'xl'];
+  let i = sizes.indexOf(size) - 1;
+  if (i < 0) {
+    i = 0;
+  }
+
+  return (
+    <Button size={size} rounded={rounded} {...rest}>
+      {children}
+      <CircleButton size={sizes[i]} {...rest}>
+        <PlusIcon />
+      </CircleButton>
+    </Button>
+  );
+};
+Combined.args = Playground.args;
+Combined.argTypes = Playground.argTypes;
