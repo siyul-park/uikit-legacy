@@ -136,7 +136,7 @@ Icon.argTypes = _.omit(Playground.argTypes, 'size', 'children');
 
 export const Combined = (props) => {
   const {
-    children, rounded, size, ...rest
+    children, size, ...rest
   } = props;
   const sizes = ['xs', 'sm', 'md', 'lg', 'xl'];
   let i = sizes.indexOf(size) - 1;
@@ -145,7 +145,7 @@ export const Combined = (props) => {
   }
 
   return (
-    <Button size={size} rounded={rounded} {...rest}>
+    <Button size={size} {...rest}>
       {children}
       <IconButton size={sizes[i]} {...rest}>
         <PlusIcon />
