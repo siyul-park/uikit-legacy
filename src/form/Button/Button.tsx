@@ -26,7 +26,7 @@ const paddingConfig: Record<NonNullable<ButtonProps['size']>, string> = {
   sm: 'px-2',
   md: 'px-3',
   lg: 'px-4',
-  xl: 'px-5',
+  xl: 'px-7',
 };
 const gapConfig: Record<NonNullable<ButtonProps['size']>, string> = {
   xs: 'gap-1',
