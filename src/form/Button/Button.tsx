@@ -46,12 +46,12 @@ const defaultHover = 'transition-colors hover:brightness-90 active:brightness-90
 const colorConfig = {
   text: {
     primary: classnames('text-primary fill-primary bg-transparent', defaultHover),
-    secondary: classnames('text-secondary fill-secondary bg-transparent', defaultHover),
+    secondary: classnames('text-primary fill-primary opacity-70 bg-transparent', defaultHover),
     white: classnames('text-slate-600 fill-slate-600 bg-transparent transition-colors', 'transition-colors hover:text-slate-700 hover:fill-slate-600 hover:bg-slate-900/5'),
   },
   contain: {
     primary: classnames('text-slate-50 fill-slate-50 bg-primary', defaultHover),
-    secondary: classnames('text-primary fill-primary bg-secondary', defaultHover),
+    secondary: classnames('text-primary fill-primary bg-primary/5', defaultHover),
     white: classnames('text-slate-600 fill-slate-600 bg-white', 'transition-colors hover:text-slate-700 hover:fill-slate-600 hover:bg-slate-50'),
   },
 };
@@ -60,7 +60,7 @@ const shapeConfig: Record<NonNullable<ButtonProps['variant']>, Record<NonNullabl
   contain: colorConfig.contain,
   outline: {
     primary: classnames(colorConfig.text.primary, 'border border-solid border-primary'),
-    secondary: classnames(colorConfig.text.secondary, 'border border-solid border-secondary'),
+    secondary: classnames(colorConfig.text.secondary, 'border border-solid border-primary/5'),
     white: classnames(colorConfig.text.white, 'border border-solid border-slate-900/5'),
   },
 };

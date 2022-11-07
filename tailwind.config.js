@@ -42,8 +42,15 @@ module.exports = {
       pink: colors.pink,
       rose: colors.rose,
 
-      primary: 'var(--color-primary)',
-      secondary: 'var(--color-secondary)',
+      primary: ({ opacityVariable, opacityValue }) => {
+        if (opacityValue !== undefined) {
+          return `rgba(var(--color-primary), ${opacityValue})`;
+        }
+        if (opacityVariable !== undefined) {
+          return `rgba(var(--color-primary), var(${opacityVariable}, 1))`;
+        }
+        return 'rgb(var(--color-primary))';
+      },
     }),
     columns: {
       auto: 'auto',
