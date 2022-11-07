@@ -60,21 +60,21 @@ const Sample = (props) => {
 Sample.args = _.omit(Playground.args, 'size');
 Sample.argTypes = _.omit(Playground.argTypes, 'size');
 
-export const Primary = Sample;
+export const Primary = Sample.bind({});
 Primary.args = {
   ...Sample.args,
   color: 'primary',
 };
 Primary.argTypes = Sample.argTypes;
 
-export const Secondary = Sample;
+export const Secondary = Sample.bind({});
 Secondary.args = {
   ...Sample.args,
   color: 'secondary',
 };
 Secondary.argTypes = Sample.argTypes;
 
-export const Default = Sample;
+export const Default = Sample.bind({});
 Default.args = {
   ...Sample.args,
   color: 'default',
