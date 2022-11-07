@@ -44,14 +44,14 @@ const roundConfig: Record<NonNullable<ButtonProps['size']>, string> = {
 };
 const transitionConfig = {
   text: {
-    primary: 'hover:bg-slate-900/5',
-    secondary: 'hover:bg-slate-900/5',
-    white: 'hover:bg-slate-900/5',
+    primary: 'hover:bg-slate-900/5 active:bg-slate-900/5',
+    secondary: 'hover:bg-slate-900/5 active:bg-slate-900/5',
+    white: 'hover:bg-slate-900/5 active:bg-slate-900/5',
   },
   contain: {
-    primary: 'hover:brightness-90',
-    secondary: 'hover:brightness-75',
-    white: 'hover:text-slate-700 hover:fill-slate-600 hover:bg-slate-50',
+    primary: 'hover:brightness-90 active:brightness-90',
+    secondary: 'hover:brightness-75 active:brightness-75',
+    white: 'hover:text-slate-700 hover:fill-slate-600 hover:bg-slate-50 active:text-slate-700 active:fill-slate-600 active:bg-slate-50',
   },
 };
 const colorConfig = {
