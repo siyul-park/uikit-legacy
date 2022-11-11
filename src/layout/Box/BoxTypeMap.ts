@@ -2,7 +2,7 @@ import React from 'react';
 
 import {
   OverridableTypeMap, RendererProps, StylerProps, TestableProps,
-} from '../type';
+} from '@type';
 
 interface BoxTypeMap<P = {}, D extends React.ElementType = 'div'>
   extends OverridableTypeMap {

@@ -19,7 +19,9 @@
     "noImplicitAny": false,
     "baseUrl": "./",
     "paths": {
-      "@layout/*": ["src/layout/*"]
+      "@type": ["src/type"],
+      "@layout/*": ["src/layout/*"],
+      "@form/*": ["src/form/*"]
     }
   },
   "types": ["react", "jest"],
