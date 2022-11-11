@@ -29,65 +29,77 @@ const gapConfig: Record<NonNullable<BasicButtonProps['size']>, string> = {
   xl: 'gap-3',
 };
 
-function transitions(color: string) {
-  return {
+const colorConfig = {
+  primary: {
+    text: {
+      primary: 'text-primary fill-primary bg-transparent',
+      secondary: 'text-primary/80 fill-primary/80 bg-transparent',
+      tertiary: 'text-primary/60 fill-primary/60 bg-transparent',
+    },
+    outline: {
+      primary: 'text-primary fill-primary bg-transparent',
+      secondary: 'text-primary/80 fill-primary/80 bg-transparent',
+      tertiary: 'text-primary/60 fill-primary/60 bg-transparent',
+    },
+    contain: {
+      primary: 'text-slate-50 fill-slate-50 bg-primary',
+      secondary: 'text-primary fill-primary bg-primary/5',
+      tertiary: 'text-primary/80 fill-primary/80 bg-transparent',
+    },
+  },
+  nature: {
+    text: {
+      primary: 'text-slate-800 fill-slate-800 bg-transparent',
+      secondary: 'text-slate-700 fill-slate-700 bg-transparent',
+      tertiary: 'text-slate-600 fill-slate-600 bg-transparent',
+    },
+    outline: {
+      primary: 'text-slate fill-slate bg-transparent',
+      secondary: 'text-slate-700 fill-slate-700 bg-transparent',
+      tertiary: 'text-slate-600 fill-slate-600 bg-transparent',
+    },
+    contain: {
+      primary: 'text-slate-50 fill-slate-50 bg-slate bg-slate-800',
+      secondary: 'text-slate-700 fill-slate-700 bg-slate-800/5',
+      tertiary: 'text-slate-600 fill-slate-600 bg-transparent',
+    },
+  },
+};
+const transitionConfig = {
+  primary: {
     text: {
       primary: 'hover:brightness-150 active:brightness-150',
       secondary: 'hover:brightness-150 active:brightness-150',
       tertiary: 'hover:brightness-150 active:brightness-150',
     },
     outline: {
-      primary: `hover:bg-${color}-900/5 active:bg-${color}-900/5 hover:bg-${color}/5 active:bg-${color}/5`,
-      secondary: `hover:bg-${color}-900/5 active:bg-${color}-900/5 hover:bg-${color}/5 active:bg-${color}/5`,
-      tertiary: `hover:bg-${color}-900/5 active:bg-${color}-900/5 hover:bg-${color}/5 active:bg-${color}/5`,
+      primary: 'hover:bg-primary/5 active:bg-primary/5',
+      secondary: 'hover:bg-primary/5 active:bg-primary/5',
+      tertiary: 'hover:bg-primary/5 active:bg-primary/5',
     },
     contain: {
       primary: 'hover:brightness-150 active:brightness-150',
       secondary: 'hover:brightness-150 active:brightness-150',
-      tertiary: `hover:bg-${color}-900/5 active:bg-${color}-900/5 hover:bg-${color}/5 active:bg-${color}/5`,
+      tertiary: 'hover:bg-primary/5 active:bg-primary/5',
     },
-  };
-}
-function colors(color: string) {
-  return {
+  },
+  nature: {
     text: {
-      primary: `text-${color} fill-${color} text-${color}-800 fill-${color}-800 bg-transparent`,
-      secondary: `text-${color}/80 fill-${color}/80 text-${color}-700 fill-${color}-700 bg-transparent`,
-      tertiary: `text-${color}/60 fill-${color}/60 text-${color}-600 fill-${color}-600 bg-transparent`,
+      primary: 'hover:brightness-150 active:brightness-150',
+      secondary: 'hover:brightness-150 active:brightness-150',
+      tertiary: 'hover:brightness-150 active:brightness-150',
     },
     outline: {
-      primary: `text-${color} fill-${color} bg-transparent`,
-      secondary: `text-${color} fill-${color} bg-transparent`,
-      tertiary: 'text-slate-600 fill-slate-600 bg-transparent',
+      primary: 'hover:bg-slate-900/5 active:bg-slate-900/5',
+      secondary: 'hover:bg-slate-900/5 active:bg-slate-900/5',
+      tertiary: 'hover:bg-slate-900/5 active:bg-slate-900/5',
     },
     contain: {
-      primary: `text-slate-50 fill-slate-50 bg-${color} bg-${color}-800`,
-      secondary: `text-${color} fill-${color} text-${color}-800 fill-${color}-800 bg-${color}/5 bg-${color}-800/5`,
-      tertiary: `text-${color}/80 fill-${color}/80 text-${color}-600 fill-${color}-600 bg-transparent`,
+      primary: 'hover:brightness-150 active:brightness-150',
+      secondary: 'hover:brightness-150 active:brightness-150',
+      tertiary: 'hover:bg-slate-900/5 active:bg-slate-900/5',
     },
-  };
-}
-function shapes(color: string) {
-  return {
-    outline: {
-      primary: `border border-solid border-${color}`,
-      secondary: 'border border-solid border-slate-900/5',
-      tertiary: 'border border-solid border-slate-900/5',
-    },
-  };
-}
-
-const transitionConfig = {
-  primary: transitions('primary'),
-  nature: transitions('slate'),
-};
-const colorConfig = {
-  primary: colors('primary'),
-  nature: colors('slate'),
-};
-const shapeConfig = {
-  primary: shapes('primary'),
-  nature: shapes('slate'),
+  },
 };
 
 const BasicButton: OverridableComponent<BasicButtonTypeMap> = (props) => {
@@ -112,7 +124,7 @@ const BasicButton: OverridableComponent<BasicButtonTypeMap> = (props) => {
         disabled ? 'opacity-40 pointer-events-none' : transitionConfig[color][variant][importance],
 
         'box-border',
-        shapeConfig[color][variant]?.[importance],
+        variant === 'outline' ? 'border border-solid border-slate-900/5' : null,
 
         sizeConfig[size],
         'inline-flex flex-row items-center justify-center',

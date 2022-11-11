@@ -1,34 +1,9 @@
-function colorPatterns() {
-  const result = [];
-  ['bg', 'text', 'border', 'fill', 'border'].forEach((it) => {
-    result.push(`${it}-{colors}`, `${it}-{colors}/{opacity}`);
-  });
-  return result;
-}
-function alsoPrefix(source, prefix) {
-  const result = [];
-  source.forEach((it) => {
-    result.push(it);
-    prefix.forEach((p) => {
-      result.push(`${p}${it}`);
-    });
-  });
-  return result;
-}
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   mode: 'jit',
   purge: [
     './src/**/*.{js,jsx,ts,tsx}',
     './safelist.txt',
-  ],
-  plugins: [
-    // eslint-disable-next-line @typescript-eslint/no-var-requires,global-require
-    require('tailwind-safelist-generator')({
-      path: 'safelist.txt',
-      patterns: alsoPrefix([...colorPatterns(), 'brightness-{brightness}', 'opacity-{opacity}', 'border', 'border-solid'], ['action:', 'hover:']),
-    }),
   ],
   presets: [],
   darkMode: 'media', // or 'class'
