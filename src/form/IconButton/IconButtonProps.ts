@@ -1,7 +1,7 @@
 import React from 'react';
 import { OverrideProps } from '@type';
 
-import IconButtonTypeMap from './CircleButtonTypeMap';
+import IconButtonTypeMap from './IconButtonTypeMap';
 
 type IconButtonProps<
   D extends React.ElementType = IconButtonTypeMap['defaultComponent'],
