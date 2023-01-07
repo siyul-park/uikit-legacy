@@ -102,7 +102,7 @@
     "tsconfig-paths-webpack-plugin": "^4.0.0",
     "ttypescript": "^1.5.15",
     "typescript": "^4.9.4",
-    "typescript-transform-paths": "^3.4.5"
+    "typescript-transform-paths": "^3.4.6"
   },
   "peerDependencies": {
     "react": "^18.2.0",
